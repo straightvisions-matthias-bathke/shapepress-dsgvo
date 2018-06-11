@@ -226,7 +226,7 @@ class SPDSGVOPublic
     public function writeGoogleAnalytics()
     {
         if (SPDSGVOSettings::get('ga_enable_analytics') === '1') :
-		
+		 
 			$output	= "
             <!-- Google Analytics -->
             <script>
