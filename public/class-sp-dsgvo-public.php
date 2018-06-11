@@ -226,19 +226,21 @@ class SPDSGVOPublic
     public function writeGoogleAnalytics()
     {
         if (SPDSGVOSettings::get('ga_enable_analytics') === '1') :
-            ?>
-
+		
+			$output	= "
             <!-- Google Analytics -->
             <script>
                         window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-                        ga('create', '<?= SPDSGVOSettings::get('ga_tag_number') ?>', 'auto');
+                        ga('create', '".SPDSGVOSettings::get('ga_tag_number')."', 'auto');
                         ga('set', 'anonymizeIp', true);
                         ga('send', 'pageview');
                         </script>
             <script async src='https://www.google-analytics.com/analytics.js'></script>
             <!-- End Google Analytics -->
-
-<?php
+			";
+		
+			echo apply_filters('SPDSGVO_analytics', $output, SPDSGVOSettings::get('ga_tag_number'));
+			
 		endif;
         
     }
